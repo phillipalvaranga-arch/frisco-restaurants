@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Frisco Restaurant Finder</title>
+<meta name="theme-color" content="#0b8f84">
+<meta name="description" content="Find the best restaurants in Frisco, TX by food type or dish, ranked by real Google ratings.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brandrow">
+    <h1>🍽️ Frisco Restaurant Finder</h1>
+    <nav class="tabs" aria-label="Views">
+      <button id="tabFind" class="tab on" type="button">Find</button>
+      <button id="tabFav" class="tab" type="button">♥ Favorites <span id="favCount" class="pill">0</span></button>
+      <button id="tabAbout" class="tab" type="button">About</button>
+    </nav>
+  </div>
+  <form id="searchForm" class="searchbar" role="search" autocomplete="off">
+    <span class="mag" aria-hidden="true">🔍</span>
+    <input id="q" type="search" inputmode="search" enterkeyhint="search" autocapitalize="off" autocorrect="off" spellcheck="false"
+      placeholder="Search a food type or dish — e.g. Chinese, sushi, oxtail" aria-label="Search a food type or dish">
+    <button id="clear" class="clear" type="button" aria-label="Clear search" hidden>✕</button>
+    <button class="go" type="submit">Search</button>
+  </form>
+  <div id="chips" class="chips" aria-label="Food types"></div>
+  <div id="dishchips" class="chips dish" aria-label="Popular dishes"></div>
+</header>
+
+<main id="main">
+  <section id="viewFind">
+    <div class="controls">
+      <label class="sort">Sort
+        <select id="sort">
+          <option value="best">Best (rating + reviews)</option>
+          <option value="rating">Highest rated</option>
+          <option value="reviews">Most reviewed</option>
+          <option value="price">Price: low to high</option>
+          <option value="open">Open now</option>
+        </select>
+      </label>
+      <label class="chk"><input type="checkbox" id="fOpen"> Open now</label>
+      <label class="chk"><input type="checkbox" id="fHalal"> Halal / no pork</label>
+    </div>
+    <div id="summary" class="summary" role="status" aria-live="polite"></div>
+    <div id="results" class="results"></div>
+  </section>
+  <section id="viewFav" hidden>
+    <div id="favSummary" class="summary"></div>
+    <div id="favResults" class="results"></div>
+  </section>
+  <section id="viewAbout" hidden class="about"></section>
+</main>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
